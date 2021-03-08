@@ -125,7 +125,7 @@ savePNGButton.addEventListener("click", function (event) {
     // download(dataURL, "drawing.png");
     $.ajax({
       type: 'POST',
-      url: '/upload',
+      url: 'https://imgbasket.herokuapp.com/upload',
       data: {
         'image': signaturePad.toDataURL('image/png')
       },
