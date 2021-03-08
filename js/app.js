@@ -13,6 +13,9 @@ var signaturePad = new SignaturePad(canvas, {
   backgroundColor: 'rgb(255, 255, 255)'
 });
 
+// LIFF related
+var liffID="1655723708-Bn7EzEeX";
+
 // Adjust canvas coordinate space taking into account pixel ratio,
 // to make it look crisp on mobile devices.
 // This also causes canvas to be cleared.
@@ -119,6 +122,41 @@ savePNGButton.addEventListener("click", function (event) {
     alert("空白不能傳哦!");
   } else {
     var dataURL = signaturePad.toDataURL();
-    download(dataURL, "drawing.png");
+    // download(dataURL, "drawing.png");
+    $.ajax({
+      type: 'POST',
+      url: '/upload',
+      data: {
+        'image': signaturePad.toDataURL('image/png')
+      },
+      success: function (res, status) {
+        liff.getProfile().then(function (profile) {
+          liff.sendMessages([
+            {
+              type: 'image',
+              originalContentUrl: 'https://imgbasket.herokuapp.com/show',
+              previewImageUrl: 'https://imgbasket.herokuapp.com/show'
+            },
+            {
+              type: 'text',
+              text: 'From:' + profile.displayName
+            }
+          ]).then(function () {
+            liff.closeWindow();
+          }).catch(function (error) {
+            window.alert('Error sending message: ' + error.message);
+          });
+        }).catch(function (error) {
+            window.alert("Error getting profile: " + error.message);
+        });
+      },
+      error: function (res) {
+        window.alert('Error saving image: ' + res.status);
+      },
+      complete: function(data) {
+      }
+    });
   }
 });
+
+liff.init(function (data) {});
