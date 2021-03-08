@@ -127,7 +127,7 @@ savePNGButton.addEventListener("click", function (event) {
       type: 'POST',
       url: 'https://imgbasket.herokuapp.com/upload',
       data: {
-        'image': signaturePad.toDataURL('image/png')
+        'image': signaturePad.toDataURL('image/jpeg')
       },
       success: function (res, status) {
         liff.getProfile().then(function (profile) {
