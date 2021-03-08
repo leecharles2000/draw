@@ -119,7 +119,7 @@ bluePenButton.addEventListener("click", function (event) {
 
 savePNGButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
-    alert("----空白不能傳哦!----");
+    alert("您好, 空白不能傳哦!");
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
