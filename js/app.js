@@ -123,7 +123,8 @@ savePNGButton.addEventListener("click", function (event) {
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
-    liff.getProfile().then(function (profile) {
+    liff.init(function (data) {});
+        liff.getProfile().then(function (profile) {
       liff.sendMessages([
         {
           type: 'image',
@@ -142,7 +143,7 @@ savePNGButton.addEventListener("click", function (event) {
     }).catch(function (error) {
         window.alert("Error getting profile: " + error.message);
     });
-}
+  }
 });
 
-liff.init(function (data) {});
+
