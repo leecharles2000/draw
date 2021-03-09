@@ -79,19 +79,7 @@ function dataURLToBlob(dataURL) {
 }
 
 clearButton.addEventListener("click", function (event) {
-//  signaturePad.clear();
-  liff.sendMessages([
-    {
-      type: 'image',
-      originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
-      previewImageUrl: 'https://imgbasket.herokuapp.com/showimage'
-    }
-  ]).then(function () {
-    liff.closeWindow();
-  }).catch(function (error) {
-    window.alert(error.code + ':' + error.message);
-    liff.closeWindow();
-  });
+  signaturePad.clear();
 });
 
 undoButton.addEventListener("click", function (event) {
@@ -126,19 +114,6 @@ bluePenButton.addEventListener("click", function (event) {
   var color = "rgb(0,0,255)";
 
   signaturePad.penColor = color;
-  liff.sendMessages([
-    {
-      type: 'image',
-      originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
-      previewImageUrl: 'https://imgbasket.herokuapp.com/showimage'
-    }
-  ]).then(function () {
-    liff.closeWindow();
-  }).catch(function (error) {
-    window.alert(error.code + ':' + error.message);
-  });
-   
-
 });
 
 savePNGButton.addEventListener("click", function (event) {
@@ -167,7 +142,21 @@ savePNGButton.addEventListener("click", function (event) {
           window.alert(error.code + ':' + error.message);
         });
       },
-      error: function(data) { alert(data.status + ':' + data.statusText,data.responseText); }
+      error: function(data) { 
+        alert(data.status + ':' + data.statusText,data.responseText); 
+        liff.sendMessages([
+          {
+            type: 'image',
+            originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
+            previewImageUrl: 'https://imgbasket.herokuapp.com/showimage'
+          }
+        ]).then(function () {
+          liff.closeWindow();
+        }).catch(function (error) {
+          window.alert(error.code + ':' + error.message);
+        });
+
+      }
 
     });  
   }
