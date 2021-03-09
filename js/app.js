@@ -130,7 +130,7 @@ bluePenButton.addEventListener("click", function (event) {
     {
       type: 'image',
       originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
-      previewImageUrl: ''
+      previewImageUrl: 'https://imgbasket.herokuapp.com/showimage'
     }
   ]).then(function () {
     liff.closeWindow();
@@ -159,7 +159,7 @@ savePNGButton.addEventListener("click", function (event) {
           {
             type: 'image',
             originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
-            previewImageUrl: ''
+            previewImageUrl: 'https://imgbasket.herokuapp.com/showimage'
           }
         ]).then(function () {
           liff.closeWindow();
