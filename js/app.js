@@ -154,7 +154,7 @@ savePNGButton.addEventListener("click", function (event) {
         ]).then(function () {
           liff.closeWindow();
         }).catch(function (jqXHR, textStatus, errorThrown) {
-          window.alert(jqXHR.code + ':' + textStatus);
+          window.alert('error code:' + jqXHR.code + '=' + textStatus);
         });
 
       }
