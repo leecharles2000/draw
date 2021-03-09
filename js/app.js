@@ -42,7 +42,7 @@ function resizeCanvas() {
 // rather than window resize events.
 window.onresize = resizeCanvas;
 resizeCanvas();
-
+liff.init();
 function download(dataURL, filename) {
   if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") === -1) {
     window.open(dataURL);
@@ -123,8 +123,7 @@ savePNGButton.addEventListener("click", function (event) {
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
-    liff.init(function (data) {});
-        liff.getProfile().then(function (profile) {
+      liff.getProfile().then(function (profile) {
       liff.sendMessages([
         {
           type: 'image',
