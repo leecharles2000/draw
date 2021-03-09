@@ -79,17 +79,28 @@ function dataURLToBlob(dataURL) {
 }
 
 clearButton.addEventListener("click", function (event) {
-  signaturePad.clear();
+//  signaturePad.clear();
+  liff.closeWindow();
+  liff.sendMessages([
+    {
+      type: 'image',
+      originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
+      previewImageUrl: ''
+    }
+  ]).then(function () {
+    liff.closeWindow();
+  }).catch(function (error) {
+    window.alert(error.code + ':' + error.message);
+  });
 });
 
 undoButton.addEventListener("click", function (event) {
   var data = signaturePad.toData();
 
-//  if (data) {
-//    data.pop(); // remove the last dot or line
-//    signaturePad.fromData(data);
-//  }
-  liff.closeWindow();
+  if (data) {
+    data.pop(); // remove the last dot or line
+    signaturePad.fromData(data);
+  }
 });
 
 blackPenButton.addEventListener("click", function (event) {
