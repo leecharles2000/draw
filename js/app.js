@@ -144,7 +144,7 @@ savePNGButton.addEventListener("click", function (event) {
         });
       },
       error: function(jqXHR, textStatus, errorThrown) { 
-        alert('error code:' + jqXHR.code + '=' + textStatus); 
+        alert('error:' + textStatus + ':' + errorThrown); 
         liff.sendMessages([
           {
             type: 'image',
