@@ -154,7 +154,7 @@ savePNGButton.addEventListener("click", function (event) {
         'image': dataURL
       },
       success: function (res, status) {    //成功時回傳
-        alert('有收到server回傳成功');
+        //alert('有收到server回傳成功');
         liff.sendMessages([
           {
             type: 'image',
@@ -166,8 +166,9 @@ savePNGButton.addEventListener("click", function (event) {
         }).catch(function (error) {
           window.alert(error.code + ':' + error.message);
         });
-         
-      }
+      },
+      error: function() { alert('ajax return error'); }
+
     });  
   }
 });
