@@ -123,22 +123,40 @@ savePNGButton.addEventListener("click", function (event) {
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
-    liff.sendMessages([
-      {
-        type: 'image',
-        originalContentUrl: 'https://imgbasket.herokuapp.com/show',
-        previewImageUrl: 'https://imgbasket.herokuapp.com/show'
+    $.ajax({
+      type: 'POST',
+      url: '/saveimage',
+      data: {
+        'image': signaturePad.toDataURL('image/jpeg')
       },
-      {
-        type: 'text',
-        text: 'From:' + profile.displayName
+      success: function (res, status) {
+        liff.getProfile().then(function (profile) {
+          liff.sendMessages([
+            {
+              type: 'image',
+              originalContentUrl: 'https://' + document.domain + '/imgs/' + res + '.jpg',
+              previewImageUrl: 'https://' + document.domain + '/imgs/' + res + '_240.jpg'
+            },
+            {
+              type: 'text',
+              text: 'From:' + profile.displayName
+            }
+          ]).then(function () {
+            liff.closeWindow();
+          }).catch(function (error) {
+            window.alert('Error sending message: ' + error.message);
+          });
+        }).catch(function (error) {
+            window.alert("Error getting profile: " + error.message);
+        });
+      },
+      error: function (res) {
+        window.alert('Error saving image: ' + res.status);
+      },
+      complete: function(data) {
       }
-    ]).then(function () {
-      liff.closeWindow();
-    }).catch(function (error) {
-      window.alert('Error sending message: ' + error.message);
     });
-    }
+  }
 });
 
 liff.init(function (data) {});
