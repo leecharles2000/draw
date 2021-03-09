@@ -42,7 +42,6 @@ function resizeCanvas() {
 // rather than window resize events.
 window.onresize = resizeCanvas;
 resizeCanvas();
-liff.init();
 function download(dataURL, filename) {
   if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") === -1) {
     window.open(dataURL);
@@ -119,7 +118,7 @@ bluePenButton.addEventListener("click", function (event) {
 
 savePNGButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
-    alert("空白不能傳哦!^_^");
+    alert("空白不能傳哦!");
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
