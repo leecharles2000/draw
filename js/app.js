@@ -80,17 +80,17 @@ function dataURLToBlob(dataURL) {
 
 clearButton.addEventListener("click", function (event) {
 //  signaturePad.clear();
-  liff.closeWindow();
   liff.sendMessages([
     {
       type: 'image',
       originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
-      previewImageUrl: ''
+      previewImageUrl: 'https://imgbasket.herokuapp.com/showimage'
     }
   ]).then(function () {
     liff.closeWindow();
   }).catch(function (error) {
     window.alert(error.code + ':' + error.message);
+    liff.closeWindow();
   });
 });
 
