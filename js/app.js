@@ -14,7 +14,7 @@ var signaturePad = new SignaturePad(canvas, {
 });
 
 // LIFF related
-var liffID="1655723708-Bn7EzEeX";
+var liffID="1655735357-9WV8kB78";
 
 // Adjust canvas coordinate space taking into account pixel ratio,
 // to make it look crisp on mobile devices.
