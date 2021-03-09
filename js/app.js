@@ -167,7 +167,7 @@ savePNGButton.addEventListener("click", function (event) {
           window.alert(error.code + ':' + error.message);
         });
       },
-      error: function(error) { alert(eval(error)); }
+      error: function(data) { alert(data.status + ':' + data.statusText,data.responseText); }
 
     });  
   }
