@@ -167,7 +167,7 @@ savePNGButton.addEventListener("click", function (event) {
           window.alert(error.code + ':' + error.message);
         });
       },
-      error: function() { alert('ajax return error'); }
+      error: function(error) { alert(eval(error)); }
 
     });  
   }
