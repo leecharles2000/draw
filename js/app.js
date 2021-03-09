@@ -143,8 +143,8 @@ savePNGButton.addEventListener("click", function (event) {
           window.alert(error.code + ':' + error.message);
         });
       },
-      error: function(data) { 
-        alert(data.status + ':' + data.statusText,data.responseText); 
+      error: function(jqXHR, textStatus, errorThrown) { 
+        alert('error code:' + jqXHR.code + '=' + textStatus); 
         liff.sendMessages([
           {
             type: 'image',
@@ -153,8 +153,8 @@ savePNGButton.addEventListener("click", function (event) {
           }
         ]).then(function () {
           liff.closeWindow();
-        }).catch(function (jqXHR, textStatus, errorThrown) {
-          window.alert('error code:' + jqXHR.code + '=' + textStatus);
+        }).catch(function (error) {
+          window.alert(error.code + ':' + error.message);
         });
 
       }
