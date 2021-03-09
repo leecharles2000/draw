@@ -144,4 +144,4 @@ savePNGButton.addEventListener("click", function (event) {
   }
 });
 
-
+liff.init({liffId: liffID});
