@@ -129,6 +129,7 @@ savePNGButton.addEventListener("click", function (event) {
         'image': dataURL
       },
       success: function (res, status) {    //成功時回傳
+        alert('有收到server回傳成功');
         liff.sendMessages([
           {
             type: 'image',
