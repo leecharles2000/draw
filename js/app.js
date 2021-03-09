@@ -118,7 +118,7 @@ bluePenButton.addEventListener("click", function (event) {
 
 savePNGButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
-    alert("空白不能傳哦!");
+    alert("空白不能傳哦!^_^");
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
@@ -126,11 +126,8 @@ savePNGButton.addEventListener("click", function (event) {
       liff.sendMessages([
         {
           type: 'text',
-          text: 'TEST TEXT MSG'
-        },
-        {
-          type: 'text',
-          text: 'From:' + profile.displayName
+          originalContentUrl: 'https://imgbasket.herokuapp.com/show',
+          previewImageUrl: 'https://imgbasket.herokuapp.com/show'
         }
       ]).then(function () {
         liff.closeWindow();
