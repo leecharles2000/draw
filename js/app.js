@@ -125,7 +125,7 @@ savePNGButton.addEventListener("click", function (event) {
       liff.getProfile().then(function (profile) {
       liff.sendMessages([
         {
-          type: 'text',
+          type: 'image',
           originalContentUrl: 'https://imgbasket.herokuapp.com/show',
           previewImageUrl: 'https://imgbasket.herokuapp.com/show'
         }
