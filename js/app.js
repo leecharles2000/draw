@@ -125,6 +125,7 @@ savePNGButton.addEventListener("click", function (event) {
   	$.ajax({
       url: "https://imgbasket.herokuapp.com/saveimage",
       type: "POST",
+      dataType: "json",
       data: {    
         'image': dataURL
       },
@@ -152,8 +153,8 @@ savePNGButton.addEventListener("click", function (event) {
           }
         ]).then(function () {
           liff.closeWindow();
-        }).catch(function (error) {
-          window.alert(error.code + ':' + error.message);
+        }).catch(function (jqXHR, textStatus, errorThrown) {
+          window.alert(jqXHR.code + ':' + textStatus);
         });
 
       }
