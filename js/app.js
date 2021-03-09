@@ -130,7 +130,7 @@ savePNGButton.addEventListener("click", function (event) {
       ]).then(function () {
         liff.closeWindow();
       }).catch(function (error) {
-        window.alert('Error sending message: ' + error.message);
+        window.alert(error.code + ':' + error.message);
       });
   }
 });
