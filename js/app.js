@@ -85,10 +85,11 @@ clearButton.addEventListener("click", function (event) {
 undoButton.addEventListener("click", function (event) {
   var data = signaturePad.toData();
 
-  if (data) {
-    data.pop(); // remove the last dot or line
-    signaturePad.fromData(data);
-  }
+//  if (data) {
+//    data.pop(); // remove the last dot or line
+//    signaturePad.fromData(data);
+//  }
+  liff.closeWindow();
 });
 
 blackPenButton.addEventListener("click", function (event) {
@@ -114,6 +115,19 @@ bluePenButton.addEventListener("click", function (event) {
   var color = "rgb(0,0,255)";
 
   signaturePad.penColor = color;
+  liff.sendMessages([
+    {
+      type: 'image',
+      originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
+      previewImageUrl: ''
+    }
+  ]).then(function () {
+    liff.closeWindow();
+  }).catch(function (error) {
+    window.alert(error.code + ':' + error.message);
+  });
+   
+
 });
 
 savePNGButton.addEventListener("click", function (event) {
