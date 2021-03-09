@@ -118,16 +118,16 @@ bluePenButton.addEventListener("click", function (event) {
 
 savePNGButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
-    alert("空白不能傳哦!!!");
+    alert("空白不能傳哦!");
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
-      liff.sendMessages(
+      liff.sendMessages([
         {
           type: 'text',
           text: '終於'
         }
-      ).then(function () {
+      ]).then(function () {
         liff.closeWindow();
       }).catch(function (error) {
         window.alert('Error sending message: ' + error.message);
