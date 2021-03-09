@@ -122,16 +122,27 @@ savePNGButton.addEventListener("click", function (event) {
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
-      liff.sendMessages([
-        {
-          type: 'text',
-          text: '終於'
-        }
-      ]).then(function () {
-        liff.closeWindow();
-      }).catch(function (error) {
-        window.alert(error.code + ':' + error.message);
-      });
+  	$.ajax({
+      url: "https://imgbasket.herokuapp.com/saveimage",
+      type: "POST",
+      data: {    
+        'image': dataURL
+      },
+      success: function (res, status) {    //成功時回傳
+        liff.sendMessages([
+          {
+            type: 'image',
+            originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
+            previewImageUrl: ''
+          }
+        ]).then(function () {
+          liff.closeWindow();
+        }).catch(function (error) {
+          window.alert(error.code + ':' + error.message);
+        });
+         
+      }
+    });  
   }
 });
 
