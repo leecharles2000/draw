@@ -122,11 +122,15 @@ savePNGButton.addEventListener("click", function (event) {
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
+    var lineid = liff.getProfile().userId;
+    //var lineid = "abc123";
   	$.ajax({
       url: "https://imgbasket.herokuapp.com/saveimage",
+      //url: "http://127.0.0.1:8888/saveimage",
       type: "POST",
       dataType: "json",
-      data: {    
+      data: {
+        'id':lineid,    
         'image': dataURL
       },
       success: function (res, status) {    //成功時回傳
@@ -134,8 +138,9 @@ savePNGButton.addEventListener("click", function (event) {
         liff.sendMessages([
           {
             type: 'image',
-            originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
-            previewImageUrl: 'https://imgbasket.herokuapp.com/showimage'
+            originalContentUrl: 'https://imgbasket.herokuapp.com/showimage/'+lineid,
+            //previewImageUrl: 'http://127.0.0.1:8888/showimage/'+lineid
+            previewImageUrl: 'https://imgbasket.herokuapp.com/showimage/'+lineid
           }
         ]).then(function () {
           liff.closeWindow();
@@ -144,12 +149,12 @@ savePNGButton.addEventListener("click", function (event) {
         });
       },
       error: function(jqXHR, textStatus, errorThrown) { 
-        //alert('error:' + textStatus + ':' + errorThrown); 
+        alert('error:' + textStatus + ':' + errorThrown); 
         liff.sendMessages([
           {
             type: 'image',
-            originalContentUrl: 'https://imgbasket.herokuapp.com/showimage',
-            previewImageUrl: 'https://imgbasket.herokuapp.com/showimage'
+            originalContentUrl: 'https://imgbasket.herokuapp.com/showimage/'+lineid,
+            previewImageUrl: 'https://imgbasket.herokuapp.com/showimage/'+lineid
           }
         ]).then(function () {
           liff.closeWindow();
