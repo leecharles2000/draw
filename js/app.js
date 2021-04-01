@@ -122,7 +122,10 @@ savePNGButton.addEventListener("click", function (event) {
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
-    var lineid = liff.getProfile().userId;
+    var p = await liff.getProfile();
+    var lineid = p.userId;
+    alert(lineid);
+    alert(p);
     //var lineid = "abc123";
   	$.ajax({
       url: "https://imgbasket.herokuapp.com/saveimage",
@@ -149,7 +152,7 @@ savePNGButton.addEventListener("click", function (event) {
         });
       },
       error: function(jqXHR, textStatus, errorThrown) { 
-        alert('error:' + textStatus + ':' + errorThrown); 
+        //alert('error:' + textStatus + ':' + errorThrown); 
         liff.sendMessages([
           {
             type: 'image',
