@@ -116,16 +116,18 @@ bluePenButton.addEventListener("click", function (event) {
   signaturePad.penColor = color;
 });
 
-savePNGButton.addEventListener("click", function (event) {
+savePNGButton.addEventListener("click", saveNsend(event));
+
+saveNsend(event) {
   if (signaturePad.isEmpty()) {
     alert("空白不能傳哦!");
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
-    
+    var p = liff.getProfile();
+    alert(typeof(p));
     var lineid = p.userId;
     alert(lineid);
-    alert(p);
     //var lineid = "abc123";
   	$.ajax({
       url: "https://imgbasket.herokuapp.com/saveimage",
@@ -169,7 +171,6 @@ savePNGButton.addEventListener("click", function (event) {
 
     });  
   }
-});
+}
 
 liff.init({liffId: liffID});
-var p = liff.getProfile();
