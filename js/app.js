@@ -122,7 +122,7 @@ savePNGButton.addEventListener("click", function (event) {
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
-    var p = await liff.getProfile();
+    
     var lineid = p.userId;
     alert(lineid);
     alert(p);
@@ -172,3 +172,4 @@ savePNGButton.addEventListener("click", function (event) {
 });
 
 liff.init({liffId: liffID});
+var p = liff.getProfile();
