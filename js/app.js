@@ -125,7 +125,7 @@ savePNGButton.addEventListener("click", function(event) {
     // download(dataURL, "drawing.png");
     const p = liff.getContext();
     var lineid = p.userId;
-    alert(lineid);
+    //alert(lineid);
     //var lineid = "abc123";
   	$.ajax({
       url: "https://imgbasket.herokuapp.com/saveimage",
