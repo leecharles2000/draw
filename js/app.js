@@ -124,9 +124,6 @@ saveNsend(event) {
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
-    var p = liff.getProfile();
-    alert(typeof(p));
-    var lineid = p.userId;
     alert(lineid);
     //var lineid = "abc123";
   	$.ajax({
@@ -174,3 +171,10 @@ saveNsend(event) {
 }
 
 liff.init({liffId: liffID});
+liff.getProfile()
+.then(profile => {
+  const lineid = profile.userId
+})
+.catch((err) => {
+  console.log('error', err);
+});
