@@ -116,9 +116,8 @@ bluePenButton.addEventListener("click", function (event) {
   signaturePad.penColor = color;
 });
 
-savePNGButton.addEventListener("click", saveNsend(event));
+savePNGButton.addEventListener("click", function(event) {
 
-saveNsend(event) {
   if (signaturePad.isEmpty()) {
     alert("空白不能傳哦!");
   } else {
@@ -168,7 +167,7 @@ saveNsend(event) {
 
     });  
   }
-}
+});
 
 liff.init({liffId: liffID});
 liff.getProfile()
