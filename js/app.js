@@ -119,10 +119,12 @@ bluePenButton.addEventListener("click", function (event) {
 savePNGButton.addEventListener("click", function(event) {
 
   if (signaturePad.isEmpty()) {
-    alert("空白不能傳哦!");
+    alert("空白不能傳哦!^_^");
   } else {
     var dataURL = signaturePad.toDataURL();
     // download(dataURL, "drawing.png");
+    const p = liff.getContext();
+    var lineid = p.userId;
     alert(lineid);
     //var lineid = "abc123";
   	$.ajax({
@@ -170,10 +172,12 @@ savePNGButton.addEventListener("click", function(event) {
 });
 
 liff.init({liffId: liffID});
+/*
 liff.getProfile()
 .then(profile => {
-  const lineid = profile.userId
+  const lineid = profile.userId;
 })
 .catch((err) => {
-  console.log('error', err);
+  alert('error'+err);
 });
+*/
